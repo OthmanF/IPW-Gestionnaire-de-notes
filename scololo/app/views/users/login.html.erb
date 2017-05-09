@@ -1,10 +1,13 @@
 <h1>Connexion</h1>
-<a href="/unsers/login"> Retour à l'accueil </a>
+<a href="/users"> Retour à l'accueil </a>
 
-<% form_tag "/unsers/login", method: "post" do %>
-	<input type="string" name="familyName" placeholder="familyName"/>
-	<input type="string" name="firstName" placeholder="firstName"/>
-  	<input type="password" name="password" />
-  	<input type="string" name="email" placeholder="email"/>
-  	<input type="submit" value="Se connecter" />
-<% end %>
+<p>
+	<%= form_tag "/users/login", method: "post" do %>
+		<input type="string" name="familyName" placeholder="familyName"/>
+		<input type="string" name="firstName" placeholder="firstName"/>
+  		<input type="password" name="password" placeholder="password"/>
+  		<input type="string" name="email" placeholder="email"/>
+  		<input type="submit" value="Se connecter" />
+	<% end %>
+
+</p>
