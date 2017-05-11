@@ -1,7 +1,18 @@
 <h1>Bienvenue sur the SCOLOLO</h1>
 <p> ce site est un gestionnaire de notes </p>
 
-<a href="/users/login"> S'identifier </a>
+<% if @current_user %>
+<p>
+<strong> Bienvenue <%= @current_user.firstName %> <%= @current_user.familyName %> </strong>
+</p>
+	<%= form_tag "/users", method: "delete" do %>
+  		<input type="submit" value="déconnection" />
+	<% end %>
+<%else%> 
+	<a href="/users/login"> S'identifier </a>
+<%end%>
+
+
 
 
 

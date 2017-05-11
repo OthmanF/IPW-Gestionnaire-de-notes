@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   def home
+    if session[:user_id]
+      @current_user = User.find(session[:user_id])
+    end      
   end
 
   def login
@@ -8,11 +11,18 @@ class UsersController < ApplicationController
   def check
   	@current_user = User.where(email: params[:email], password: params[:password]).first
   	if @current_user
-  		flash[:info] = "Bienveny #{@current_user.firstName} #{@current_user.familyName}"
-  		redirect_to "/users"
+  		flash[:info] = "Vous êtes maintenant connecté"
+  		session[:user_id] = @current_user.id
+      redirect_to "/users"
   	else
   		flash[:info] = "Échec de la connexion"
   		redirect_to "/users/login"
   	end
+  end
+
+  def logout
+    session[:user_id] = nil
+    flash[:info] = "Vous vous êtes déconnecté "
+    redirect_to "/users"
   end
 end
