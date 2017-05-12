@@ -25,4 +25,14 @@ class UsersController < ApplicationController
     flash[:info] = "Vous vous êtes déconnecté "
     redirect_to "/users"
   end
+
+  def signin
+  end
+
+  def create
+    User.create familyName: params[:familyName] , firstName: params[:firstName], email: params[:email], password: params[:password] 
+    flash[:info] = "Création réussite du compte !"
+    session[:user_id] = User.last.id
+    redirect_to "/users" 
+  end
 end

@@ -1,0 +1,13 @@
+<h1>Création de compte</h1>
+<a href="/users"> Retour à l'accueil </a>
+
+<p>
+	<%= form_tag "/users/signin", method: "post" do %>
+		<input type="string" name="familyName" placeholder="familyName"/>
+		<input type="string" name="firstName" placeholder="firstName"/>
+  		<input type="password" name="password" placeholder="password"/>
+  		<input type="string" name="email" placeholder="email"/>
+  		<input type="submit" value="Créer un compte" />
+	<% end %>
+
+</p>

@@ -10,13 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170509131739) do
+ActiveRecord::Schema.define(version: 20170511141951) do
+
+  create_table "epreuves", force: :cascade do |t|
+    t.string   "titre"
+    t.datetime "date"
+    t.integer  "enseignant_id"
+    t.integer  "matiere_id"
+  end
+
+  create_table "matieres", force: :cascade do |t|
+    t.string   "titre"
+    t.datetime "debut"
+    t.datetime "fin"
+    t.integer  "enseignant_id"
+    t.integer  "epreuve_id"
+    t.integer  "etudiant_id"
+    t.index ["epreuve_id"], name: "index_matieres_on_epreuve_id"
+    t.index ["etudiant_id"], name: "index_matieres_on_etudiant_id"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.integer "valeur"
+    t.integer "etudiant_id"
+    t.integer "epreuve_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "familyName"
     t.string "firstName"
     t.string "password"
     t.string "email"
+    t.string "role"
   end
 
 end

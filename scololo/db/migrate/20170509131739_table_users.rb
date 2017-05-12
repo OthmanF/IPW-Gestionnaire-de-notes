@@ -4,6 +4,7 @@ class TableUsers < ActiveRecord::Migration[5.0]
   	add_column :users, :familyName, :string 
   	add_column :users, :firstName, :string
   	add_column :users, :password, :string
-  	add_column :users, :email, :string  	
+  	add_column :users, :email, :string   
+
   end
 end
